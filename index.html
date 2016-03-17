@@ -1,0 +1,64 @@
+<HTML>
+	<head>
+		 <meta charset="utf-8">
+	</head>
+	<body>	
+	
+	<div id="content-cz">
+	<h1>Akvaduino Controller</h1>
+		<div class="time">
+			<span id="day-cz">(((DEN)))</span> | 
+			<span id="time-cz">(((ČAS)))</span> |
+			<span id="next-cyklus">(((DALŠÍ CYKLUS)))</span>
+		</div>
+		<div class="navigation">
+			<a href="#automatic-controller">Automatické ovládání</a> |
+			<a href="#manual-controller">Manuální ovládání</a> |
+			<a href="#quick-choice">Rychlé volby</a> |
+			<a href="#histori">Historie</a>
+			<button id="refresh-cz">Aktualizovat</button>
+		</div>
+		<div class="main-content" id="automatic-controller-cz">
+			<h2>Automatické ovládání</h2>
+			<form id="automatic-controller-form-cz">
+				Východ Slunce (HH:MM)<br />
+				<input type="time" name="sunSetHour" />
+				<input type="time" name="sunSetMinute" /> (((aktualne)))<br /><br />
+
+				Západ Slunce (HH:MM)<br />
+				<input type="time" name="sunRiseHour" />
+				<input type="time" name="sunRiseMinute" /> (((aktualne)))<br /><br />
+
+				Výhod Měsíce (HH:MM)<br />
+				<input type="time" name="moonSetHour" />
+				<input type="time" name="moonSetMinute" /> (((aktualne)))<br /><br />
+				
+				Západ Měsíce (HH:MM)<br />
+				<input type="time" name="moonRiseHour" />
+				<input type="time" name="moonRiseMinute" /> (((aktualne)))<br /><br />
+			</form>
+		</div>
+		<div class="main-content" id="manual-controller-cz">
+			<h2>Manuální ovládání</h2>
+			<form id="manual-controller-form-cz">
+				Červená<br />
+				<input name="red" type="range"/><br /><br />
+
+				Zelená<br />
+				<input name="green" type="range"/><br /><br />
+
+				Modrá<br />
+				<input name="blue" type="range"/><br /><br />
+			</form>	
+		</div>	
+		<div class="main-content" id="quick-choice-cz">
+			<h2>Rychlé volby</h2>
+			tlačítka...
+		</div>
+		<div class="main-content" id="history-cz">
+			<h2>Historie</h2>
+			grafy...
+		</div>
+	</div>
+	</BODY>
+</HTML>
