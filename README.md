@@ -1,10 +1,12 @@
 # akvaduino
 
-// text od Lukáše
+TODO text od Lukáše
 
-# Popis komunikace
+## Popis komunikace
 
-## Request / response
+TODO Stavový diagram (je třeba?)
+
+### Request / response
 
 
 <table>
@@ -39,4 +41,3 @@
 ## Testovací server
 
 Testovací server v index.php a .htaccess umožňují testovat program.
-
