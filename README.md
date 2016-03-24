@@ -27,6 +27,8 @@ Proměnné se předávají v pořadí, jak popisuje tabulka.
 
 ## Login 
 
+Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adrese. Heslo je uvedeno na schránce, ve které je umístěno zařízení.
+
 ## Proměnné
 
 <table>
@@ -42,4 +44,4 @@ Proměnné se předávají v pořadí, jak popisuje tabulka.
 
 ## Testovací server
 
-Testovací server v index.php a .htaccess umožňují testovat program.
+Testovací server (index.php a .htaccess) umožňují testovat program i bez přístupu k akvaduino.
