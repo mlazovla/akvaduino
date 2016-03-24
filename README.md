@@ -6,6 +6,8 @@ TODO text od Lukáše
 
 TODO Stavový diagram (je třeba?)
 
+Proměnné se předávají v pořadí, jak popisuje tabulka.
+
 ### Request / response
 
 
