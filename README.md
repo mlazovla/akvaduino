@@ -14,10 +14,10 @@ TODO Stavový diagram (je třeba?)
 		<tr><th>REQUEST</th><th>Popis</th><th>Návratové kódy</th></tr>
 	</thead>
 	<tbody>
-		<tr><th>GET /</th><td>Podle cookie vráti buď login nebo přesměruje na settings.</td><td>200,301</td></tr>
-		<tr><th>GET /settings.html</th><td>Podle cookie vráti buď settings nebo přesměruje na login.</td><td>200,301</td></tr>
+		<tr><th>GET /</th><td>Podle cookie vráti buď login nebo přesměruje na settings.</td><td>200,302</td></tr>
+		<tr><th>GET /settings.html</th><td>Podle cookie vráti buď settings nebo přesměruje na login.</td><td>200,302</td></tr>
 		<tr><th>GET /values</th><td>Podle cookie vrací buď seznam hodnot ze zařízení nebo nic.</td><td>200,403</td></tr>
-		<tr><th>POST /login</th><td>V případě úspěchu nastaví cookie a přesměruje na settings, při neúspěchu přesměruje znovu na login</td><td>301</td></tr>
+		<tr><th>POST /login</th><td>V případě úspěchu nastaví cookie a přesměruje na settings, při neúspěchu přesměruje znovu na login</td><td>302</td></tr>
 		<tr><th>POST /values</th><td>Nastaví hodnoty</td><td>200,403</td></tr>
 		<tr><th>jinak</th><td>Stránka neexistuje</td><td>404</td></tr>
 	</tbody>

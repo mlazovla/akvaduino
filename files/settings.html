@@ -23,7 +23,7 @@
 		</div>
 		<div class="main-content" id="automatic-controller-cz">
 			<h2>Automatické ovládání</h2>
-			<form id="automatic-controller-form-cz">
+			<form id="-controller-form-cz">
 				Východ Slunce (HH:MM)<br />
 				<input type="time" name="sunSetHour" />
 				<input type="time" name="sunSetMinute" /> (((aktualne)))<br /><br />
@@ -39,13 +39,10 @@
 				Západ Měsíce (HH:MM)<br />
 				<input type="time" name="moonRiseHour" />
 				<input type="time" name="moonRiseMinute" /> (((aktualne)))<br /><br />
-
-				<input type="submit" value="Potvrdit" name="send" id="automatic-controller-form-submit-cz" />
-			</form>
 		</div>
 		<div class="main-content" id="manual-controller-cz">
 			<h2>Manuální ovládání</h2>
-			<form id="manual-controller-form-cz">
+				<input type="checkbox" name="useManual" /> Použít manuální osvětlení<br /><br />
 				Červená<br />
 				<input name="red" type="range" min="0" max="255" step="1"/><br /><br />
 
@@ -57,8 +54,6 @@
 
 				Bílá<br />
 				<input name="white" type="range" min="0" max="255" step="1"/><br /><br />
-
-			</form>	
 		</div>	
 		<!--div class="main-content" id="quick-choice-cz">
 			<h2>Rychlé volby</h2>
@@ -69,6 +64,9 @@
 			grafy...
 		</div>
 
+			<input type="submit" value="Potvrdit" name="send" id="automatic-controller-form-submit-cz" class="pull-right" />
+		</form>
+		<br />
 		<hr class="fat"/>
 
 		<!--  SPOTREBA  -->
