@@ -6,6 +6,8 @@ TODO text od Lukáše
 
 TODO Stavový diagram (je třeba?)
 
+Proměnné se předávají v pořadí, jak popisuje tabulka.
+
 ### Request / response
 
 
@@ -25,6 +27,8 @@ TODO Stavový diagram (je třeba?)
 
 ## Login 
 
+Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adrese. Heslo je uvedeno na schránce, ve které je umístěno zařízení.
+
 ## Proměnné
 
 <table>
@@ -40,4 +44,4 @@ TODO Stavový diagram (je třeba?)
 
 ## Testovací server
 
-Testovací server v index.php a .htaccess umožňují testovat program.
+Testovací server (index.php a .htaccess) umožňují testovat program i bez přístupu k akvaduino.
