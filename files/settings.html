@@ -35,6 +35,12 @@
 			h1 {
 				text-align: center;
 			}
+			h5 {
+				color: black;
+				font-size: 90%;
+				margin-bottom: 3px;
+				font-weight: bold; 
+			}
 			hr.fat {
 				border: 2px solid darkgreen;
 			}
@@ -77,6 +83,16 @@
 			.pull-right {
 				float: right;
 			}
+			.default-val {
+				font-size: smaller;
+				letter-spacing: 0.2px;
+				color: rgba(50,50,50,0.6);
+				font-style: italic;
+			}
+			.default-val span {
+				font-style: normal;
+				color: rgba(50,50,50,1);	
+			}
 		</style>
 
 		<!-- jQuery library -->
@@ -105,37 +121,49 @@
 		</div>
 		<div class="main-content" id="automatic-controller-cz">
 			<h2>Automatické ovládání</h2>
-			<form id="-controller-form-cz">
-				Východ Slunce (HH:MM)<br />
-				<input type="time" name="sunSetHour" />
-				<input type="time" name="sunSetMinute" /> (((aktualne)))<br /><br />
+			<form id="controller-form-cz">
+				<h5>Východ Slunce (HH:MM)</h5>
+				<input type="number" min="0" max="23" maxlength="2" name="sunriseHour" /> :
+				<input type="number" min="0" max="59" maxlength="2" name="sunriseMinute" />
+				bude trvat <input type="number" min="0" max="60" maxlength="2" name="sunriseDelay" /> minut<br />
+				<span class="default-val">aktuálně nastaveno <span id="sunriseHour"></span>:<span id="sunriseMinute"></span>, trvá <span id="sunriseDelay"></span> minut</i></span>
+				<br />
 
-				Západ Slunce (HH:MM)<br />
-				<input type="time" name="sunRiseHour" />
-				<input type="time" name="sunRiseMinute" /> (((aktualne)))<br /><br />
+				<h5>Západ Slunce (HH:MM)</h5>
+				<input type="number" min="0" max="23" maxlength="2" name="sunsetHour" /> :
+				<input type="number" min="0" max="59" maxlength="2" name="sunsetMinute" />
+				bude trvat <input type="number" min="0" max="60" maxlength="2" name="sunsetDelay" /> minut<br />
+				<span class="default-val">aktuálně nastaveno <span id="sunsetHour"></span>:<span id="sunsetMinute"></span>, trvá <span id="sunsetDelay"></span> minut</i></span>
+				<br />
 
-				Výhod Měsíce (HH:MM)<br />
-				<input type="time" name="moonSetHour" />
-				<input type="time" name="moonSetMinute" /> (((aktualne)))<br /><br />
-				
-				Západ Měsíce (HH:MM)<br />
-				<input type="time" name="moonRiseHour" />
-				<input type="time" name="moonRiseMinute" /> (((aktualne)))<br /><br />
+				<h5>Východ Měsíce (HH:MM)</h5>
+				<input type="number" min="0" max="23" maxlength="2" name="moonriseHour" /> :
+				<input type="number" min="0" max="59" maxlength="2" name="moonriseMinute" />
+				bude trvat <input type="number" min="0" max="60" maxlength="2" name="moonriseDelay" /> minut<br />
+				<span class="default-val">aktuálně nastaveno <span id="moonriseHour"></span>:<span id="moonriseMinute"></span>, trvá <span id="moonriseDelay"></span> minut</i></span>
+				<br />
+
+				<h5>Západ Měsíce (HH:MM)</h5>
+				<input type="number" min="0" max="23" maxlength="2" name="moonsetHour" /> :
+				<input type="number" min="0" max="59" maxlength="2" name="moonsetMinute" />
+				bude trvat <input type="number" min="0" max="60" maxlength="2" name="moonsetDelay" /> minut<br />
+				<span class="default-val">aktuálně nastaveno <span id="moonsetHour"></span>:<span id="moonsetMinute"></span>, trvá <span id="moonsetDelay"></span> minut</i></span>
+				<br />
 		</div>
 		<div class="main-content" id="manual-controller-cz">
 			<h2>Manuální ovládání</h2>
 				<input type="checkbox" name="useManual" /> Použít manuální osvětlení<br /><br />
 				Červená<br />
-				<input name="red" type="range" min="0" max="255" step="1"/><br /><br />
+				<input name="manualR" type="range" min="0" max="255" step="1"/><br /><br />
 
 				Zelená<br />
-				<input name="green" type="range" min="0" max="255" step="1"/><br /><br />
+				<input name="manualG" type="range" min="0" max="255" step="1"/><br /><br />
 
 				Modrá<br />
-				<input name="blue" type="range" min="0" max="255" step="1"/><br /><br />
+				<input name="manualB" type="range" min="0" max="255" step="1"/><br /><br />
 
 				Bílá<br />
-				<input name="white" type="range" min="0" max="255" step="1"/><br /><br />
+				<input name="manualW" type="range" min="0" max="255" step="1"/><br /><br />
 		</div>	
 		<!--div class="main-content" id="quick-choice-cz">
 			<h2>Rychlé volby</h2>
@@ -163,23 +191,23 @@
 					<tbody>
 						<tr>
 							<th>Červená</th>
-							<td id="ledR">(((ledR)))</td>
+							<td id="redCons">(((ledR)))</td>
 						</tr>
 						<tr>
 							<th>Zelená</th>
-							<td id="ledG">(((ledG)))</td>
+							<td id="greenCons">(((ledG)))</td>
 						</tr>	
 						<tr>
 							<th>Modrá</th>
-							<td id="ledB">(((ledB)))</td>
+							<td id="blueCons">(((ledB)))</td>
 						</tr>	
 						<tr>
 							<th>Bílá</th>
-							<td id="ledW">(((ledW)))</td>
+							<td id="whiteCons">(((ledW)))</td>
 						</tr>
 						<tr class="sum">
 							<th>CELKEM</th>
-							<td id="ledSum">(((ledSum)))</td>
+							<td id="RGBWCons">(((ledSum)))</td>
 						</tr>
 					</tbody>
 				</table>
@@ -193,23 +221,23 @@
 					<tbody>
 						<tr>
 							<th>Za den</th>
-							<td id="consumptionD">(((consumptionD)))</td>
+							<td id="dayCons">(((consumptionD)))</td>
 						</tr>
 						<tr>
 							<th>Za týden</th>
-							<td id="consumptionW">(((consumptionW)))</td>
+							<td id="weekCons">(((consumptionW)))</td>
 						</tr>	
 						<tr>
 							<th>Za měsíc</th>
-							<td id="consumptionM">(((consumptionM)))</td>
+							<td id="monthCons">(((consumptionM)))</td>
 						</tr>	
 						<tr>
 							<th>Za rok</th>
-							<td id="consumptionY">(((consumptionY)))</td>
+							<td id="yearCons">(((consumptionY)))</td>
 						</tr>
 						<tr class="sum">
 							<th>CELKEM</th>
-							<td id="consumptionSum">(((consumptionSum)))</td>
+							<td id="totalCons">(((consumptionSum)))</td>
 						</tr>
 					</tbody>
 				</table>
@@ -218,6 +246,7 @@
 	</div>
 
 	<script type="text/javascript">
+	
 		$(document).ready(function() {
 			// NAVIGACNI LISTA
 			$("#automatic-controller-button").on("click", function() {
@@ -245,7 +274,79 @@
 				$(this).preventDefault();
 			})
 
+			// VYPLNENI HODNOT DO APLIKACE
+			function setSetings(values) {
+				for(key in values) {
+					$("input[name='"+key+"']").val(values[key]);
+				}
+				for(key in values) {
+					$("#"+key).text(values[key]);
+				}
+				$("input[name='useManual']").prop("checked",values['useManual'] != "0");
+				$("#RGBWCons").text( Number(values["redCons"]) + Number(values["greenCons"]) + Number(values["blueCons"]) + Number(values["whiteCons"] ));
+			}
+
 			// KOMUNIKACE A INTERFACE S AKVADIUNEM
+			function loadSettings() {
+				var jqxhr = $.get( "values", function(data) {
+			  		var values = data.split("\n");
+					setSetings( {
+						"useManual" : values[0],
+						"sunsetHour" : values[1],
+						"sunsetMinute" : values[2],
+						"sunriseHour" : values[3],
+						"sunriseMinute" : values[4],
+						"moonsetHour" : values[5],
+						"moonsetMinute" : values[6],
+						"moonriseHour" : values[7],
+						"moonriseMinute" : values[8],
+						"sunsetDelay" : values[9],
+						"sunriseDelay" : values[10],
+
+						"moonsetDelay" : values[11],
+						"moonriseDelay" : values[12],
+						"secondSet" : values[13],
+						"minuteSet" : values[14],
+						"hourSet" : values[15],
+						"dayOfWeekSet" : values[16],
+						"dayOfMonthSet" : values[17],
+						"monthSet" : values[18],
+						"yearSet" : values[19],
+						"second" : values[20],
+
+						"minute" : values[21],
+						"hour" : values[22],
+						"dayOfWeek" : values[23],
+						"dayOfMonth" : values[24],
+						"month" : values[25],
+						"year" : values[26],
+						"dayCons" : values[27],
+						"weekCons" : values[28],
+						"monthCons" : values[29],
+						"yearCons" : values[30],
+
+						"totalCons" : values[31],
+						"redCons" : values[32],
+						"greenCons" : values[33],
+						"blueCons" : values[34],
+						"whiteCons" : values[35],
+						"temperature" : values[36],
+						"manualR" : values[37],
+						"manualG" : values[38],
+						"manualB" : values[39],
+						"manualW" : values[40]
+					});
+				})
+			  	.fail(function() {
+			    	alert( "Nelze načíst nastaveni:\n"+data );
+			  	})
+			}
+
+			loadSettings();			
+
+			
+
+
 		})
 	</script>
 

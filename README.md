@@ -48,9 +48,9 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>moonriseHour</th><td>22</td><td>int, 0..23, zapad mesice hodina</td></tr>
 		<tr><th>moonriseMinute</th><td>30</td><td>int, 0..59, zapad mesice minuta</td></tr>
 		<tr><th>sunsetDelay</th><td>20</td><td>int, 0..59, delka vychodu slunce v minutach</td></tr>
-		<tr><th>sunsetDelay</th><td>20</td><td>int, 0..59, delka zapadu slunce v minutach</td></tr>
+		<tr><th>sunriseDelay</th><td>20</td><td>int, 0..59, delka zapadu slunce v minutach</td></tr>
 		<tr><th>moonsetDelay</th><td>5</td><td>int, 0..59, delka vychodu mesice v minutach</td></tr>
-		<tr><th>moonsetDelay</th><td>5</td><td>int, 0..59, delka zapadu mesice v minutach</td></tr>	
+		<tr><th>moonriseDelay</th><td>5</td><td>int, 0..59, delka zapadu mesice v minutach</td></tr>	
 		<tr><th>secondSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
 		<tr><th>minuteSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
 		<tr><th>hourSet</th><td>12</td><td>int, 0..23, nastaveni RTC</td></tr>
@@ -67,7 +67,7 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>year</th><td>01</td><td>int, 01..99, cteni RTC</td></tr>
 		<tr><th>dayCons</th><td>255</td><td>float, 0..INF, spotreba za den</td></tr>
 		<tr><th>weekCons</th><td>255</td><td>float, 0..INF, spotreba za tyden</td></tr>
-		<tr><th>moonCons</th><td>255</td><td>float, 0..INF, spotreba za mesic</td></tr>
+		<tr><th>monthCons</th><td>255</td><td>float, 0..INF, spotreba za mesic</td></tr>
 		<tr><th>yearCons</th><td>255</td><td>float, 0..INF, spotreba za rok</td></tr>
 		<tr><th>totalCons</th><td>255</td><td>float, 0..INF, spotreba celkem</td></tr>
 		<tr><th>redCons</th><td>255</td><td>float, 0..INF, aktualni spotreba cervene LED</td></tr>
@@ -98,9 +98,9 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>moonsetMinute</th><td>00</td><td>int, 0..59, vychod mesice minuta</td></tr>
 		<tr><th>moonriseHour</th><td>22</td><td>int, 0..23, zapad mesice hodina</td></tr>
 		<tr><th>moonriseMinute</th><td>30</td><td>int, 0..59, zapad mesice minuta</td></tr>
-		<tr><th>sunsetDelay</th><td>20</td><td>int, 0..59, delka vychodu slunce v minutach</td></tr>
+		<tr><th>sunriseDelay</th><td>20</td><td>int, 0..59, delka vychodu slunce v minutach</td></tr>
 		<tr><th>sunsetDelay</th><td>20</td><td>int, 0..59, delka zapadu slunce v minutach</td></tr>
-		<tr><th>moonsetDelay</th><td>5</td><td>int, 0..59, delka vychodu mesice v minutach</td></tr>
+		<tr><th>moonriseDelay</th><td>5</td><td>int, 0..59, delka vychodu mesice v minutach</td></tr>
 		<tr><th>moonsetDelay</th><td>5</td><td>int, 0..59, delka zapadu mesice v minutach</td></tr>	
 		<tr><th>secondSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
 		<tr><th>minuteSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
@@ -118,7 +118,7 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>year</th><td>01</td><td>int, 01..99, cteni RTC</td></tr>
 		<tr><th>dayCons</th><td>255</td><td>float, 0..INF, spotreba za den</td></tr>
 		<tr><th>weekCons</th><td>255</td><td>float, 0..INF, spotreba za tyden</td></tr>
-		<tr><th>moonCons</th><td>255</td><td>float, 0..INF, spotreba za mesic</td></tr>
+		<tr><th>monthCons</th><td>255</td><td>float, 0..INF, spotreba za mesic</td></tr>
 		<tr><th>yearCons</th><td>255</td><td>float, 0..INF, spotreba za rok</td></tr>
 		<tr><th>totalCons</th><td>255</td><td>float, 0..INF, spotreba celkem</td></tr>
 		<tr><th>redCons</th><td>255</td><td>float, 0..INF, aktualni spotreba cervene LED</td></tr>
