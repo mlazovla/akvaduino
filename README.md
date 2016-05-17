@@ -109,23 +109,6 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>dayOfMonthSet</th><td>1</td><td>int, 01..31, nastaveni RTC</td></tr>
 		<tr><th>monthSet</th><td>1</td><td>int, 1..12, nastaveni RTC</td></tr>
 		<tr><th>yearSet</th><td>01</td><td>int, 01..99, nastaveni RTC</td></tr>	
-		<tr><th>second</th><td>30</td><td>int, 0..59, cteni RTC</td></tr>
-		<tr><th>minute</th><td>30</td><td>int, 0..59, cteni RTC</td></tr>
-		<tr><th>hour</th><td>12</td><td>int, 0..23, cteni RTC</td></tr>
-		<tr><th>dayOfWeek</th><td>1</td><td>int, 1..7, cteni RTC, zacina v nedeli</td></tr>
-		<tr><th>dayOfMonth</th><td>1</td><td>int, 1..31, cteni RTC</td></tr>
-		<tr><th>month</th><td>1</td><td>int, 1..12, cteni RTC</td></tr>
-		<tr><th>year</th><td>01</td><td>int, 01..99, cteni RTC</td></tr>
-		<tr><th>dayCons</th><td>255</td><td>float, 0..INF, spotreba za den</td></tr>
-		<tr><th>weekCons</th><td>255</td><td>float, 0..INF, spotreba za tyden</td></tr>
-		<tr><th>monthCons</th><td>255</td><td>float, 0..INF, spotreba za mesic</td></tr>
-		<tr><th>yearCons</th><td>255</td><td>float, 0..INF, spotreba za rok</td></tr>
-		<tr><th>totalCons</th><td>255</td><td>float, 0..INF, spotreba celkem</td></tr>
-		<tr><th>redCons</th><td>255</td><td>float, 0..INF, aktualni spotreba cervene LED</td></tr>
-		<tr><th>greenCons</th><td>255</td><td>float, 0..INF, aktualni spotreba zelene LED</td></tr>
-		<tr><th>blueCons</th><td>255</td><td>float, 0..INF, aktualni spotreba modre LED</td></tr>
-		<tr><th>whiteCons</th><td>255</td><td>float, 0..INF, aktualni spotreba bile LED</td></tr>
-		<tr><th>temperature</th><td>255</td><td>float, 0..INF, aktualni teplota</td></tr>
 		<tr><th>manualR</th><td>130</td><td>int, 0..255, cervena LED manualni ovladani</td></tr>
 		<tr><th>manualG</th><td>130</td><td>int, 0..255, zelena LED manualni ovladani</td></tr>
 		<tr><th>manualB</th><td>130</td><td>int, 0..255, modra LED manualni ovladani</td></tr>
