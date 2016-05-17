@@ -50,13 +50,6 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>sunriseDelay</th><td>20</td><td>int, 0..59, delka zapadu slunce v minutach</td></tr>
 		<tr><th>moonsetDelay</th><td>5</td><td>int, 0..59, delka vychodu mesice v minutach</td></tr>
 		<tr><th>moonriseDelay</th><td>5</td><td>int, 0..59, delka zapadu mesice v minutach</td></tr>	
-		<tr><th>secondSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
-		<tr><th>minuteSet</th><td>30</td><td>int, 0..59, nastaveni RTC</td></tr>
-		<tr><th>hourSet</th><td>12</td><td>int, 0..23, nastaveni RTC</td></tr>
-		<tr><th>dayOfWeekSet</th><td>1</td><td>int, 1..7, nastaveni RTC</td></tr>
-		<tr><th>dayOfMonthSet</th><td>1</td><td>int, 01..31, nastaveni RTC</td></tr>
-		<tr><th>monthSet</th><td>1</td><td>int, 1..12, nastaveni RTC</td></tr>
-		<tr><th>yearSet</th><td>01</td><td>int, 01..99, nastaveni RTC</td></tr>	
 		<tr><th>second</th><td>30</td><td>int, 0..59, cteni RTC</td></tr>
 		<tr><th>minute</th><td>30</td><td>int, 0..59, cteni RTC</td></tr>
 		<tr><th>hour</th><td>12</td><td>int, 0..23, cteni RTC</td></tr>
