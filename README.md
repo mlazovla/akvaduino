@@ -38,7 +38,6 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>Jméno</th><th>Příklad</th><th>Popis</th></tr>
 	</thead>
 	<tbody>
-		<tr><th>useManual</th><td>0</td><td>bool, 0..1, přepínání mezi auto/manual</td></tr>
 		<tr><th>sunsetHour</th><td>5</td><td>int, 0..23, vychod slunce hodina</td></tr>
 		<tr><th>sunsetMinute</th><td>55</td><td>int, 0..59, vychod slunce minuta</td></tr>
 		<tr><th>sunriseHour</th><td>20</td><td>int, 0..23, zapad slunce hodina</td></tr>
@@ -75,11 +74,6 @@ Přihlášení do Akvaduino je zařízeno pouze pomocí hesla na zvolené IP adr
 		<tr><th>blueCons</th><td>255</td><td>float, 0..INF, aktualni spotreba modre LED</td></tr>
 		<tr><th>whiteCons</th><td>255</td><td>float, 0..INF, aktualni spotreba bile LED</td></tr>
 		<tr><th>temperature</th><td>255</td><td>float, 0..INF, aktualni teplota</td></tr>
-		<tr><th>manualR</th><td>130</td><td>int, 0..255, cervena LED manualni ovladani</td></tr>
-		<tr><th>manualG</th><td>130</td><td>int, 0..255, zelena LED manualni ovladani</td></tr>
-		<tr><th>manualB</th><td>130</td><td>int, 0..255, modra LED manualni ovladani</td></tr>
-		<tr><th>manualW</th><td>130</td><td>int, 0..255, bila LED manualni ovladani</td></tr>
-		
 	</tbody>
 </table>
 
