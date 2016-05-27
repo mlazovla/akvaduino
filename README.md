@@ -4,12 +4,9 @@ TODO text od Lukáše
 
 ## Popis komunikace
 
-TODO Stavový diagram (je třeba?)
-
 Proměnné se předávají v pořadí, jak popisuje tabulka.
 
 ### Request / response
-
 
 <table>
 	<thead>
@@ -21,6 +18,7 @@ Proměnné se předávají v pořadí, jak popisuje tabulka.
 		<tr><th>GET /values</th><td>Podle cookie vrací buď seznam hodnot ze zařízení nebo nic.</td><td>200,403</td></tr>
 		<tr><th>POST /login</th><td>V případě úspěchu nastaví cookie a přesměruje na settings, při nepřihlášení přesměruje znovu na login, při neúspěchu vrátí chybu</td><td>200,302,400</td></tr>
 		<tr><th>POST /values</th><td>Nastaví hodnoty</td><td>200,403</td></tr>
+		<tr><th>GET /history</th><td>Vrátí soubor naměřených hodnot</td><td>200,403</td></tr>
 		<tr><th>jinak</th><td>Stránka neexistuje</td><td>404</td></tr>
 	</tbody>
 </table>
