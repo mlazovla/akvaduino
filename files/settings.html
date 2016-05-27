@@ -98,18 +98,31 @@
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-
 	</head>
 	<body>	
-	
+
+	<div id="communicationScreen" style="background-color: rgba(255,247,249,0.9); padding-top:30%; width:100%; height: 100%; position:fixed; top:0px; left:0px; text-align:center;">
+		<big>Probíhá komunikace, <br />
+		čekejte prosím...</big>
+		<p>pokud trvá déle než několik sekund, je něco špatně</p>
+	</div>	
+
+	<div id="loadingScreen" style="background-color: rgba(40,40,25,0.9); padding-top:30%; display:block; width:100%; height: 100%; position:fixed; top:0px; left:0px; text-align:center; font-size: 150%; color:white; letter-spacing: 0.5px; font-family: sans-serif">
+		<big><strong>Probíhá nahrávání, <br />
+		čekejte prosím...</strong></big>
+		<p>pokud trvá déle než minutu, je něco špatně</p>
+		<p><small><i>Pro správnou funkčnost je potřeba JavaScript a připojení k internetu</i></small></p>
+	</div>	
+
+
 	<div class="content" id="content-cz">
 	<a href="login" class="pull-right">Odhlásit</a>
 	<h1>Akvaduino Controller</h1>
 
 		<div class="clock">
-			<span id="day-cz">(((DEN)))</span> | 
-			<span id="time-cz">(((ČAS)))</span> |
-			<span id="next-cyklus">(((DALŠÍ CYKLUS)))</span>
+			<span id="dayOfMonth"></span>.<span id="month"></span>.<span id="year"></span> | 
+			<span id="hour"></span>:<span id="minute"></span> |
+			<span id="nextCyklus"></span>
 		</div>
 		<hr class="fat"/>
 		<div class="navigation">
@@ -171,7 +184,7 @@
 		</div -->
 		<div class="main-content" id="history-cz">
 			<h2>Historie</h2>
-			grafy...
+			<a href="#">Stáhnout naměřené hodnoty</a>
 		</div>
 
 			<input type="submit" value="Potvrdit" name="send" id="controller-form-submit-cz" class="pull-right" />
@@ -246,7 +259,10 @@
 	</div>
 
 	<script type="text/javascript">
-	
+		Array.prototype.min = function() {
+  			return Math.min.apply(null, this);
+		};
+
 		$(document).ready(function() {
 			// NAVIGACNI LISTA
 			$("#automatic-controller-button").on("click", function() {
@@ -266,16 +282,55 @@
 				$("#history-cz").css("display","block");
 			})
 			$("#refresh-cz").on("click", function() {
-				alert("Zatim neni naprogramovano.");
+				loadSettings();
 			})
 
 			// AUTOMATICKE OVLADANI
-			$("#automatic-controller-form-submit-cz").on('click', function() {
-				$(this).preventDefault();
-			})
+			$("#controller-form-cz").submit(function( event ) {
+				$("#communicationScreen").show();
+				$.post( "values", getValuesFromForm(), function() {
+				  loadSettings();
+				  alert( "Nastavení aplikováno." );
+				  $("#communicationScreen").hide();
+				});	 
+				event.preventDefault();
+			});
+
+			// VYPOCET DALSIHO CYKLU
+			/**
+			 * Prevede cas z string hour a string minut do poctu minut od pulnoci.
+			 */
+			function toMinutesFromMidnight(hour, minute) {
+				return Number(hour)*60 + Number(minute);
+			}
+			function nextCyklus(values) {
+				var date = new Date();
+				var now = date.getHours()*60 + date.getMinutes();
+				
+				
+				var tmp = [
+					/* "sunset" : */ toMinutesFromMidnight(values["sunsetHour"], values["sunsetMinute"]),
+					/* "moonset" : */ toMinutesFromMidnight(values["moonsetHour"], values["moonsetMinute"]),
+					/* "sunrise" : */ toMinutesFromMidnight(values["sunriseHour"], values["sunriseMinute"]),
+					/* "moonrise" : */ toMinutesFromMidnight(values["moonriseHour"], values["moonriseMinute"])
+				]
+				for (var i = tmp.length - 1; i >= 0; i--) {
+					if (tmp[i] >= now) {
+						tmp[i] -= now;
+					} else {
+						tmp[i] += 2880;
+					}
+				}
+
+				var minutes = Math.min.apply(null, tmp) % 60;
+				var hours = Math.floor(Math.min.apply(null, tmp) / 60);
+
+				return "" + hours + ":" + ((minutes<10) ? "0" : "") + minutes;
+				
+			}
 
 			// VYPLNENI HODNOT DO APLIKACE
-			function setSetings(values) {
+			function setSettings(values) {
 				for(key in values) {
 					$("input[name='"+key+"']").val(values[key]);
 				}
@@ -284,13 +339,15 @@
 				}
 				$("input[name='useManual']").prop("checked",values['useManual'] != "0");
 				$("#RGBWCons").text( Number(values["redCons"]) + Number(values["greenCons"]) + Number(values["blueCons"]) + Number(values["whiteCons"] ));
+				$("#nextCyklus").text( "další cyklus za " + nextCyklus(values));
 			}
 
 			// KOMUNIKACE A INTERFACE S AKVADIUNEM
 			function loadSettings() {
+				$("#communicationScreen").show();
 				var jqxhr = $.get( "values", function(data) {
 			  		var values = data.split("\n");
-					setSetings( {
+					setSettings( {
 						"useManual" : values[0],
 						"sunsetHour" : values[1],
 						"sunsetMinute" : values[2],
@@ -336,17 +393,46 @@
 						"manualB" : values[39],
 						"manualW" : values[40]
 					});
+					$("#communicationScreen").hide();
 				})
 			  	.fail(function() {
 			    	alert( "Nelze načíst nastaveni:\n"+data );
+			    	$("#communicationScreen").hide();
 			  	})
 			}
 
-			loadSettings();			
 
-			
+			// PRECTENI HODNOT Z FORMULARE
+			function getValuesFromForm() {
+				return ""+
+					$("input[name='useManual']").val() + "\n" + //	0	bool, 0..1, přepínání mezi auto/manual
+					$("input[name='sunsetHour']").val() + "\n" + //	5	int, 0..23, vychod slunce hodina
+					$("input[name='sunsetMinute']").val() + "\n" + //	55	int, 0..59, vychod slunce minuta
+					$("input[name='sunriseHour']").val() + "\n" + //	20	int, 0..23, zapad slunce hodina
+					$("input[name='sunriseMinute']").val() + "\n" + //	30	int, 0..59, zapad slunce minuta
+					$("input[name='moonsetHour']").val() + "\n" + //	21	int, 0..23, vychod mesice hodina
+					$("input[name='moonsetMinute']").val() + "\n" + //	00	int, 0..59, vychod mesice minuta
+					$("input[name='moonriseHour']").val() + "\n" + //	22	int, 0..23, zapad mesice hodina
+					$("input[name='moonriseMinute']").val() + "\n" + //	30	int, 0..59, zapad mesice minuta
+					$("input[name='sunriseDelay']").val() + "\n" + //	20	int, 0..59, delka vychodu slunce v minutach
+					$("input[name='sunsetDelay']").val() + "\n" + //	20	int, 0..59, delka zapadu slunce v minutach
+					$("input[name='moonriseDelay']").val() + "\n" + //	5	int, 0..59, delka vychodu mesice v minutach
+					$("input[name='moonsetDelay']").val() + "\n" + //	5	int, 0..59, delka zapadu mesice v minutach
+					$("input[name='secondSet']").val() + "\n" + //	30	int, 0..59, nastaveni RTC
+					$("input[name='minuteSet']").val() + "\n" + //	30	int, 0..59, nastaveni RTC
+					$("input[name='hourSet']").val() + "\n" + //	12	int, 0..23, nastaveni RTC
+					$("input[name='dayOfWeekSet']").val() + "\n" + //	1	int, 1..7, nastaveni RTC
+					$("input[name='dayOfMonthSet']").val() + "\n" + //	1	int, 01..31, nastaveni RTC
+					$("input[name='monthSet']").val() + "\n" + //	1	int, 1..12, nastaveni RTC
+					$("input[name='yearSet']").val() + "\n" + //	01	int, 01..99, nastaveni RTC
+					$("input[name='manualR']").val() + "\n" + //	130	int, 0..255, cervena LED manualni ovladani
+					$("input[name='manualG']").val() + "\n" + //	130	int, 0..255, zelena LED manualni ovladani
+					$("input[name='manualB']").val() + "\n" + //	130	int, 0..255, modra LED manualni ovladani
+					$("input[name='manualW']").val();//	130	int, 0..255, bila LED manualni ovladani				
+			}
 
-
+			$("#loadingScreen").hide();
+			loadSettings();
 		})
 	</script>
 
